@@ -1,0 +1,47 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 14pt;
+    background-color: #222222;
+    font-family: 'Saira Semi Condensed', sans-serif;
+    height: 100% !important;
+    width: 100% !important;
+    max-height: 100% !important;
+    max-width: 100%;
+    scroll-behavior: unset;
+    font-weight: 100;
+}
+
+.center {
+    text-align: center;
+}
+
+.width-100 {
+    width: 100% !important;
+}
+
+.bg-pink {
+    background-color: #990044;
+}
+
+.bg-grey {
+    background-color: #333333;
+}
+
+.bar {
+    height: 10px;
+}
+
+#id_file {
+    margin: 20px auto;
+    display: block;
+}
+
+.green {
+    color: #66FF66;
+}
+
+.red {
+    color: #FF6666;
+}

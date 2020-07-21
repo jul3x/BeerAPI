@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeerAPI - Checker</title>
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "base.css" %}">
+</head>
+<body>
+<div class="width-100 bg-grey bar">
+</div>
+<div>
+<h1 class="center">BeerAPI - collection manager from another galaxy</h1>
+</div>
+<div class="width-100 bg-pink bar">
+</div>
+<h2 class="center">Put file with picture to check existence in database.</h2>
+<div class="width-100 center"><strong>Status: </strong>{% if not exists %}<span class="green">not found</span>{% else %}<span class="red">found</span>{% endif %}</div>
+<div id="form" class="width-100 center">
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+</div>
+</body>
+</html>
