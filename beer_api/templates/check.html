@@ -23,7 +23,18 @@
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
+    <input type="button" value="Clear database" onclick="window.location.replace('/check/clear')">
 </form>
+</div>
+
+<div class="width-100 center">
+    <h3>Imported photos:</h3>
+    {% for photo in photos %}
+    <div class="photo_small_div">
+        <img src="{{ photo.photo.url }}" class="photo_small" />
+        <span class="note" style="word-wrap: break-word;">Hash data: {{ photo.hash_data }}</span>
+    </div>
+    {% endfor %}
 </div>
 </body>
 </html>
