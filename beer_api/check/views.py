@@ -28,9 +28,6 @@ def check(request, template_name='check.html'):
             objs = None
             try:
                 cap_image.save()
-                hash = imagehash.average_hash(Image.open(re.sub(' ', '_', cap_image.photo.path)), hash_size=36)
-                cap_image.hash_data = str(hash)
-                cap_image.save()
 
                 img = cv2.imread(re.sub(' ', '_', cap_image.photo.path), cv2.IMREAD_COLOR)
                 width, height, channels = img.shape
@@ -53,6 +50,10 @@ def check(request, template_name='check.html'):
                     res = cv2.bitwise_and(img, img, mask=mask)
                     cropped_res = res[b - r:b + r, a - r:a + r]
                     cv2.imwrite(re.sub(' ', '_', cap_image.photo.path), cropped_res)
+
+                hash = imagehash.colorhash(Image.open(re.sub(' ', '_', cap_image.photo.path)), binbits=3)
+                cap_image.hash_data = str(hash) if hash else ''
+                cap_image.save()
 
                 objs = sorted(CapImage.objects.all(),
                               key=lambda img:
