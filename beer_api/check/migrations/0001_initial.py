@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(blank=True, max_length=255)),
-                ('hash_data', models.CharField(max_length=2048, null=True)),
+                ('score', models.IntegerField()),
                 ('photo', models.ImageField(upload_to='images')),
             ],
         ),

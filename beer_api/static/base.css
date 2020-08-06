@@ -52,6 +52,10 @@ html, body {
     display: block;
 }
 
+.photo_smaller {
+    width: 100px;
+}
+
 .photo_small_div {
     width: 200px;
     margin: 10px;

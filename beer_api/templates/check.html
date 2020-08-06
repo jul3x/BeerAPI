@@ -17,7 +17,7 @@
 <div class="width-100 bg-pink bar">
 </div>
 <h2 class="center">Put file with picture to check existence in database.</h2>
-<div class="width-100 center"><strong>Status: </strong>{% if not exists %}<span class="green">not found</span>{% else %}<span class="red">found</span>{% endif %}</div>
+<div class="width-100 center"><strong>Status: </strong>{% if not exists or exists == "not found" %}<span class="red">not found</span>{% else %}<span class="green">{{ exists }}</span>{% endif %}</div>
 <div id="form" class="width-100 center">
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -28,12 +28,17 @@
 </div>
 
 <div class="width-100 center">
-    <h3>Imported photos:</h3>
-    {% for photo in photos %}
+    <h3>Similar caps:</h3>
+    {% for photo, score in similar_photos %}
     <div class="photo_small_div">
         <img src="{{ photo.photo.url }}" class="photo_small" />
-        <span class="note" style="word-wrap: break-word;">Hash data: {{ photo.hash_data }}</span>
+        <span class="note" style="word-wrap: break-word;">Score: {{ score }}</span>
     </div>
+    {% endfor %}
+
+    <h3>Imported caps:</h3>
+    {% for photo in photos %}
+        <img src="{{ photo.photo.url }}" class="photo_smaller" />
     {% endfor %}
 </div>
 </body>
